@@ -1,6 +1,7 @@
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -1643,6 +1644,17 @@ public void keyPressed(KeyEvent e) {
 	 getContentPane().repaint();
     getContentPane().revalidate();
 
+    if (e.getKeyCode() == KeyEvent.VK_W) {
+    	Component[] componentes = botones.getComponents();
+    	for (int i = 0; i < componentes.length; i++) {
+            if (componentes[i] instanceof JButton) {
+                JButton button = (JButton) componentes[i];
+                int newWidth = button.getWidth() + 30;
+                int newHeight = button.getHeight() + 10;
+                button.setSize(newWidth, newHeight);
+            }
+        }
+    }
 }
 
 @Override
