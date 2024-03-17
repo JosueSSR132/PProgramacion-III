@@ -38,9 +38,9 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame implements MouseListener{
 	
-	
+	JPanel botones;
 	public Ventana() {
 		
 		this.setVisible(true);
@@ -60,6 +60,8 @@ public class Ventana extends JFrame{
 		this.setLayout(null);
 		
 		this.iniciarComponentes();
+		
+		this.addMouseListener(this);
 		
 	}
 	
@@ -87,7 +89,7 @@ public void iniciarComponentes() {
 
 public void botones() {
 	this.setSize(500, 750);
-	JPanel botones = new JPanel();
+	botones = new JPanel();
 	botones.setSize(this.getWidth(), this.getHeight());
 	botones.setLocation(0, 0);
 	botones.setBackground(Color.decode("#47CBEC"));
@@ -1550,6 +1552,67 @@ public void Calculadora() {
 	Panel_Calculadora.add(botonSuma);
 	
 	this.add(Panel_Calculadora);
+}
+
+@Override
+public void mouseClicked(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mousePressed(MouseEvent e) {
+	// TODO Auto-generated method stub
+	Random rand = new Random();
+	float r = rand.nextFloat();
+	float g = rand.nextFloat();
+	float b = rand.nextFloat();
+	
+	int x = (int)Math.floor(Math.random()*120+1);
+	int y = (int)Math.floor(Math.random()*120+1);
+	
+	String colorTexto2 = "" + r + g + b;
+	JButton tercerBoton = new JButton(colorTexto2);
+	tercerBoton.setSize(x, y);
+	tercerBoton.setLocation(e.getX(), e.getY());
+	tercerBoton.setOpaque(true);
+	tercerBoton.setBackground(new Color(r, g, b));
+	
+	tercerBoton.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JButton btn = (JButton) e.getSource();
+			String btnTexto = btn.getText();
+			JOptionPane.showMessageDialog(null, btnTexto);
+		}
+		
+	});
+	
+	getContentPane().repaint();
+	getContentPane().revalidate();
+	
+	botones.add(tercerBoton);
+
+}
+
+@Override
+public void mouseReleased(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseEntered(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseExited(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
 }
 
 
