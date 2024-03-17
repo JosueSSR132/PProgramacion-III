@@ -1610,7 +1610,12 @@ public void mouseReleased(MouseEvent e) {
 @Override
 public void mouseEntered(MouseEvent e) {
 	// TODO Auto-generated method stub
+	Random rand = new Random();
+	float r = rand.nextFloat();
+	float g = rand.nextFloat();
+	float b = rand.nextFloat();
 	
+	botones.setBackground(new Color(r, g, b));
 }
 
 @Override
