@@ -9,14 +9,11 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -31,7 +28,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -40,9 +36,8 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Ventana extends JFrame implements MouseListener, KeyListener{
+public class Ventana extends JFrame{
 	
-	public JPanel botones;
 	public Ventana() {
 		
 		this.setVisible(true);
@@ -63,18 +58,15 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		
 		this.iniciarComponentes();
 		
-		this.addMouseListener(this);
-		
-		this.addKeyListener(this);
 	}
 	
 public void iniciarComponentes() {
 	
 	//this.loginVersion2();
 	
-	//this.login();
+	this.login();
 	
-	//this.registro();
+	this.registro();
 	
 	//this.admin();
 	
@@ -84,75 +76,8 @@ public void iniciarComponentes() {
 	
 	//this.CalcularInteres();
 	
-	this.botones();
-	
 	this.repaint();
 	this.validate();
-}
-
-public void botones() {
-	this.setSize(500, 750);
-	botones = new JPanel();
-	botones.setSize(this.getWidth(), this.getHeight());
-	botones.setLocation(0, 0);
-	botones.setBackground(Color.decode("#47CBEC"));
-	botones.setLayout(null);
-	
-	JButton superBoton = new JButton("Click me");
-	superBoton.setFont(new Font("Agency FB", Font.BOLD, 24));
-	superBoton.setBounds(150,  570,  200, 40);
-	botones.add(superBoton);
-	
-	superBoton.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			int x = (int)Math.floor(Math.random()*450+1);
-			int y = (int)Math.floor(Math.random()*650+1);
-
-			int w = (int)Math.floor(Math.random()*120+1);
-			int h = (int)Math.floor(Math.random()*120+1);
-			
-			Random rand = new Random();
-			float r = rand.nextFloat();
-			float g = rand.nextFloat();
-			float b = rand.nextFloat();
-			
-			String colorTexto = "" + r + g + b;
-			JButton otroBoton = new JButton(colorTexto);
-			otroBoton.setOpaque(true);
-			otroBoton.setBackground(new Color(r, g, b));
-			otroBoton.setBounds(x, y, w, h);
-			botones.add(otroBoton);
-			
-			otroBoton.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					JButton btn = (JButton) e.getSource();
-					String btnTexto = btn.getText();
-					
-					botones.remove(btn);
-					getContentPane().repaint();
-					getContentPane().revalidate();
-					
-					//JOptionPane.showMessageDialog(null, btnTexto);
-					
-				}
-				
-				
-				
-			});
-			botones.add(otroBoton);
-			getContentPane().repaint();
-			getContentPane().revalidate();
-		}
-		
-	});
-	
-	this.add(botones);
 }
 
 @Override
@@ -1558,94 +1483,6 @@ public void Calculadora() {
 	Panel_Calculadora.add(botonSuma);
 	
 	this.add(Panel_Calculadora);
-}
-
-@Override
-public void mouseClicked(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void mousePressed(MouseEvent e) {
-	// TODO Auto-generated method stub
-	Random rand = new Random();
-	float r = rand.nextFloat();
-	float g = rand.nextFloat();
-	float b = rand.nextFloat();
-	
-	int x = (int)Math.floor(Math.random()*120+1);
-	int y = (int)Math.floor(Math.random()*120+1);
-	
-	String colorTexto2 = "" + r + g + b;
-	JButton tercerBoton = new JButton(colorTexto2);
-	tercerBoton.setSize(x, y);
-	tercerBoton.setLocation(e.getX(), e.getY());
-	tercerBoton.setOpaque(true);
-	tercerBoton.setBackground(new Color(r, g, b));
-	
-	tercerBoton.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			JButton btn = (JButton) e.getSource();
-			String btnTexto = btn.getText();
-			JOptionPane.showMessageDialog(null, btnTexto);
-		}
-		
-	});
-	
-	getContentPane().repaint();
-	getContentPane().revalidate();
-	
-	botones.add(tercerBoton);
-}
-
-@Override
-public void mouseReleased(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void mouseEntered(MouseEvent e) {
-	// TODO Auto-generated method stub
-	Random rand = new Random();
-	float r = rand.nextFloat();
-	float g = rand.nextFloat();
-	float b = rand.nextFloat();
-	
-	botones.setBackground(new Color(r, g, b));
-}
-
-@Override
-public void mouseExited(MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void keyTyped(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void keyPressed(KeyEvent e) {
-	// TODO Auto-generated method stub
-	 if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-		 System.out.println("xd");
-         botones.removeAll();
-     } 
-	 getContentPane().repaint();
-     getContentPane().revalidate();
-}
-
-@Override
-public void keyReleased(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
 }
 
 
