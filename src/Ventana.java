@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -38,7 +40,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Ventana extends JFrame implements MouseListener{
+public class Ventana extends JFrame implements MouseListener, KeyListener{
 	
 	JPanel botones;
 	public Ventana() {
@@ -62,6 +64,8 @@ public class Ventana extends JFrame implements MouseListener{
 		this.iniciarComponentes();
 		
 		this.addMouseListener(this);
+		
+		this.addKeyListener(this);
 		
 	}
 	
@@ -1620,6 +1624,29 @@ public void mouseEntered(MouseEvent e) {
 
 @Override
 public void mouseExited(MouseEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void keyTyped(KeyEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void keyPressed(KeyEvent e) {
+	// TODO Auto-generated method stub
+	if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+        botones.removeAll();
+    } 
+	 getContentPane().repaint();
+    getContentPane().revalidate();
+
+}
+
+@Override
+public void keyReleased(KeyEvent e) {
 	// TODO Auto-generated method stub
 	
 }
