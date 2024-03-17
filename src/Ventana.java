@@ -29,6 +29,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -113,14 +114,32 @@ public void botones() {
 			float g = rand.nextFloat();
 			float b = rand.nextFloat();
 			
-			JButton otroBoton = new JButton("Click me");
+			String colorTexto = "" + r + g + b;
+			JButton otroBoton = new JButton(colorTexto);
 			otroBoton.setOpaque(true);
 			otroBoton.setBackground(new Color(r, g, b));
 			otroBoton.setBounds(x, y, w, h);
 			botones.add(otroBoton);
 			
+			otroBoton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					JButton btn = (JButton) e.getSource();
+					String btnTexto = btn.getText();
+					
+					JOptionPane.showMessageDialog(null, btnTexto);
+					
+				}
+				
+				
+				
+			});
+			botones.add(otroBoton);
 			getContentPane().repaint();
-			getContentPane().revalidate();	
+			getContentPane().revalidate();
+				
 				
 			};
 		});
