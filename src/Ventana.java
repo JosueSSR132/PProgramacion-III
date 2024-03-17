@@ -131,7 +131,11 @@ public void botones() {
 					JButton btn = (JButton) e.getSource();
 					String btnTexto = btn.getText();
 					
-					JOptionPane.showMessageDialog(null, btnTexto);
+					botones.remove(btn);
+					getContentPane().repaint();
+					getContentPane().revalidate();
+					
+					//JOptionPane.showMessageDialog(null, btnTexto);
 					
 				}
 				
@@ -141,10 +145,10 @@ public void botones() {
 			botones.add(otroBoton);
 			getContentPane().repaint();
 			getContentPane().revalidate();
-				
-				
-			};
-		});
+		}
+		
+	});
+	
 	this.add(botones);
 }
 
