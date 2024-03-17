@@ -97,7 +97,6 @@ public void botones() {
 	botones.setLocation(0, 0);
 	botones.setBackground(Color.decode("#47CBEC"));
 	botones.setLayout(null);
-	this.requestFocusInWindow();
 	
 	JButton superBoton = new JButton("Click me");
 	superBoton.setFont(new Font("Agency FB", Font.BOLD, 24));
@@ -1636,7 +1635,7 @@ public void keyTyped(KeyEvent e) {
 public void keyPressed(KeyEvent e) {
 	// TODO Auto-generated method stub
 	 if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-		 
+		 System.out.println("xd");
          botones.removeAll();
      } 
 	 getContentPane().repaint();
