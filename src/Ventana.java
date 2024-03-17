@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -37,6 +38,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame{
+	
 	
 	public Ventana() {
 		
@@ -64,9 +66,9 @@ public void iniciarComponentes() {
 	
 	//this.loginVersion2();
 	
-	this.login();
+	//this.login();
 	
-	this.registro();
+	//this.registro();
 	
 	//this.admin();
 	
@@ -76,9 +78,55 @@ public void iniciarComponentes() {
 	
 	//this.CalcularInteres();
 	
+	this.botones();
+	
 	this.repaint();
 	this.validate();
 }
+
+public void botones() {
+	this.setSize(500, 750);
+	JPanel botones = new JPanel();
+	botones.setSize(this.getWidth(), this.getHeight());
+	botones.setLocation(0, 0);
+	botones.setBackground(Color.decode("#47CBEC"));
+	botones.setLayout(null);
+	
+	JButton superBoton = new JButton("Click me");
+	superBoton.setFont(new Font("Agency FB", Font.BOLD, 24));
+	superBoton.setBounds(150,  570,  200, 40);
+	botones.add(superBoton);
+	
+	superBoton.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			int x = (int)Math.floor(Math.random()*450+1);
+			int y = (int)Math.floor(Math.random()*650+1);
+
+			int w = (int)Math.floor(Math.random()*120+1);
+			int h = (int)Math.floor(Math.random()*120+1);
+			
+			Random rand = new Random();
+			float r = rand.nextFloat();
+			float g = rand.nextFloat();
+			float b = rand.nextFloat();
+			
+			JButton otroBoton = new JButton("Click me");
+			otroBoton.setOpaque(true);
+			otroBoton.setBackground(new Color(r, g, b));
+			otroBoton.setBounds(x, y, w, h);
+			botones.add(otroBoton);
+			
+			getContentPane().repaint();
+			getContentPane().revalidate();	
+				
+			};
+		});
+	this.add(botones);
+}
+
 
 @Override
 public void paint(Graphics g) {
