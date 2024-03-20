@@ -1655,6 +1655,48 @@ public void keyPressed(KeyEvent e) {
             }
         }
     }
+    
+    int coordenadaX = 0;
+    int coordenadaY = 0;
+    if (e.getKeyCode() == KeyEvent.VK_UP) {
+    	coordenadaY = -10;
+    	/*Component[] componentes = botones.getComponents();
+    	for (int i = 0; i < componentes.length; i++) {
+            if (componentes[i] instanceof JButton) {
+                JButton button = (JButton) componentes[i];
+                int newPosX = button.getX() + coordenadaX;
+                int newPosY = button.getY() + coordenadaY;
+                button.setLocation(newWidth, newHeight);
+            }
+        }*/
+    	moverBotones(0, coordenadaY);
+    }
+    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+    	coordenadaY = 10;
+    	moverBotones(0, coordenadaY);
+    }
+    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+    	coordenadaX = -10;
+    	moverBotones(coordenadaX, 0);
+    }
+    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+    	coordenadaX = 10;
+    	moverBotones(coordenadaX, 0);
+    }
+    
+    
+}
+
+public void moverBotones(int coordX, int coordY) {
+	Component[] componentes = botones.getComponents();
+	for (int i = 0; i < componentes.length; i++) {
+        if (componentes[i] instanceof JButton) {
+            JButton button = (JButton) componentes[i];
+            int newPosX = button.getX() + coordX;
+            int newPosY = button.getY() + coordY;
+            button.setLocation(newPosX, newPosY);
+        }
+    }
 }
 
 @Override
