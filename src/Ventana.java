@@ -86,7 +86,7 @@ public void iniciarComponentes() {
 	
 	//this.CalcularInteres();
 	
-	this.botones();
+	//this.botones();
 	
 	this.repaint();
 	this.validate();
