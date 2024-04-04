@@ -76,17 +76,17 @@ public class TicTac extends JFrame {
 	};
 	
 	private void handleButtonClick(JButton clickedButton) {
-        if (clickedButton.getText().equals("")) { // Verifica si el botón está vacío
+        if (clickedButton.getText().equals("")) { 
             if (turno) {
-                clickedButton.setText("O"); // Establece "O" en el botón
-                turno = false; // Cambia el turno
+                clickedButton.setText("O"); 
+                turno = false; 
             } else {
-                clickedButton.setText("X"); // Establece "X" en el botón
-                turno = true; // Cambia el turno
+                clickedButton.setText("X"); 
+                turno = true; 
             }
             
             clickedButton.setEnabled(false);
-            checkWinner();
+            revisarGanador();
         }
     }
 
@@ -223,79 +223,56 @@ public class TicTac extends JFrame {
 		
 		
 		
-		/*for (int i = 0; i < 9; i++) { // Inicializa y agrega botones al panel
-            buttons[i] = new JButton("");
-            buttons[i].addActionListener(new ButtonListener()); // Agrega el mismo ActionListener a cada botón
-            panel.add(buttons[i]);
-        }*/
-		
-		
-		
-		
 		
 		
 	}
 	
 	
-	private void checkWinner() {
-        //String winner = "";
+	private void revisarGanador() {
         boolean ganar = false;
 
         if (btnNewButton.getText().equals(btnNewButton1.getText()) && 
                 btnNewButton.getText().equals(btnNewButton_2.getText()) && 
                 !btnNewButton.getText().equals("")) {
-                //winner = btnNewButton.getText();
         	    ganar = true;
             } else if (btnNewButton_3.getText().equals(btnNewButton_4.getText()) && 
                        btnNewButton_3.getText().equals(btnNewButton_5.getText()) && 
                        !btnNewButton_3.getText().equals("")) {
-                //winner = btnNewButton_3.getText();
             	ganar = true;
             } else if (btnNewButton_6.getText().equals(btnNewButton_7.getText()) && 
                        btnNewButton_6.getText().equals(btnNewButton_8.getText()) && 
                        !btnNewButton_6.getText().equals("")) {
-                //winner = btnNewButton_6.getText();
             	ganar = true;
             }
 
-            // Check columns
             if (btnNewButton.getText().equals(btnNewButton_3.getText()) && 
                 btnNewButton.getText().equals(btnNewButton_6.getText()) && 
                 !btnNewButton.getText().equals("")) {
-                //winner = btnNewButton.getText();
             	ganar = true;
             } else if (btnNewButton1.getText().equals(btnNewButton_4.getText()) && 
                        btnNewButton1.getText().equals(btnNewButton_7.getText()) && 
                        !btnNewButton1.getText().equals("")) {
-               // winner = btnNewButton1.getText();
             	ganar = true;
             } else if (btnNewButton_2.getText().equals(btnNewButton_5.getText()) && 
                        btnNewButton_2.getText().equals(btnNewButton_8.getText()) && 
                        !btnNewButton_2.getText().equals("")) {
-                //winner = btnNewButton_2.getText();
+                
             	ganar = true;
             }
 
-            // Check diagonals
+  
             if (btnNewButton.getText().equals(btnNewButton_4.getText()) && 
                 btnNewButton.getText().equals(btnNewButton_8.getText()) && 
                 !btnNewButton.getText().equals("")) {
-                //winner = btnNewButton.getText();
+                
             	ganar = true;
             } else if (btnNewButton_2.getText().equals(btnNewButton_4.getText()) && 
                        btnNewButton_2.getText().equals(btnNewButton_6.getText()) && 
                        !btnNewButton_2.getText().equals("")) {
-                //winner = btnNewButton_2.getText();
             	ganar = true;
             }
 
-        /*if (!winner.equals("")) {
-            if (winner.equals("X")) {
-                JOptionPane.showMessageDialog(this, "¡Jugador 1 ha ganado!");
-            } else {
-                JOptionPane.showMessageDialog(this, "¡Jugador 2 ha ganado!");
-            }
-        }*/
+        
             
             if (ganar) {
                 if (turno) {
@@ -306,28 +283,9 @@ public class TicTac extends JFrame {
             }
         
 	}
-	
-	
-	
-	
-	/*private class ButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton clickedButton = (JButton) e.getSource(); // Obtiene el botón que ha desencadenado el evento
-            if (clickedButton.getText().equals("")) { // Verifica si el botón está vacío
-                if (turno) {
-                    clickedButton.setText("O"); // Establece "O" en el botón
-                    turno = false; // Cambia el turno
-                } else {
-                    clickedButton.setText("X"); // Establece "X" en el botón
-                    turno = true; // Cambia el turno
-                }
-            }
-        }
-    }*/
 
 	
 	
 	
-	//null, null, true set icon, text, enable
+	
 }
