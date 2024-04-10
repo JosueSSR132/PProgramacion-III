@@ -17,7 +17,6 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.Timer;
 
 import java.awt.FlowLayout;
 
@@ -27,8 +26,6 @@ public class PuzzleNumbers extends JFrame {
 	private JPanel contentPane;
 	private JButton botones [][] = new JButton[4][4];
 	private JLabel lblNewLabel_1;
-	private Timer timer; 
-	private long startTime;
 
 	/**
 	 * Launch the application.
@@ -146,8 +143,6 @@ public class PuzzleNumbers extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblNewLabel_1);
 		
-		long startTime = System.currentTimeMillis();
-		
 		
 		
 		JPanel panel_4 = new JPanel();
@@ -164,16 +159,6 @@ public class PuzzleNumbers extends JFrame {
         });
 		panel_4.add(btnNewButton);
 	}
-	
-		
-	 private void updateTimer() {
-	        long elapsedTime = System.currentTimeMillis() - startTime;
-	        long elapsedSeconds = elapsedTime / 1000;
-	        long secondsDisplay = elapsedSeconds % 60;
-	        long elapsedMinutes = elapsedSeconds / 60;
-	        String timeText = String.format("%02d:%02d:%02d", elapsedMinutes, secondsDisplay, elapsedSeconds);
-	        lblNewLabel_1.setText(timeText);
-	    }
 	
 		
 	
