@@ -22,6 +22,7 @@ public class Plataforma extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	JPanel login = new JPanel();
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -65,7 +66,7 @@ public class Plataforma extends JFrame {
 		
 		open_Login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
+            	// TODO Auto-generated method stub
             	getContentPane().removeAll(); 
         		getContentPane().revalidate(); 
         		getContentPane().repaint(); 
@@ -75,7 +76,7 @@ public class Plataforma extends JFrame {
 		
 		open_Registro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
+            	// TODO Auto-generated method stub
             	getContentPane().removeAll(); 
         		getContentPane().revalidate(); 
         		getContentPane().repaint();
@@ -85,11 +86,11 @@ public class Plataforma extends JFrame {
 		
 		open_RecuperarCuenta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
+            	// TODO Auto-generated method stub
             	getContentPane().removeAll(); 
         		getContentPane().revalidate(); 
         		getContentPane().repaint();
-        		RecuperarCuenta(Plataforma.this);
+        		recuperarCuenta(Plataforma.this);
             }
         });
 		
@@ -108,31 +109,31 @@ public class Plataforma extends JFrame {
 		
 		open_Alta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
+            	// TODO Auto-generated method stub
             	getContentPane().removeAll(); 
         		getContentPane().revalidate(); 
         		getContentPane().repaint();
-        		Alta(Plataforma.this);
+        		alta(Plataforma.this);
             }
         });
 		
 		open_Baja.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
+            	// TODO Auto-generated method stub
             	getContentPane().removeAll(); 
         		getContentPane().revalidate(); 
         		getContentPane().repaint();
-        		Baja(Plataforma.this);
+        		baja(Plataforma.this);
             }
         });
 		
 		open_Consultar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
+            	// TODO Auto-generated method stub
             	getContentPane().removeAll(); 
         		getContentPane().revalidate(); 
         		getContentPane().repaint();
-        		Consultar(Plataforma.this);
+        		consultar(Plataforma.this);
             }
         });
 		
@@ -142,6 +143,36 @@ public class Plataforma extends JFrame {
 		JMenuItem open_pregunta2 = new JMenuItem("¿Como acceder al sistema?");
 		JMenuItem open_pregunta3 = new JMenuItem("¿Que pasa si olvide mi contraseña?");
 		
+		open_pregunta1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	// TODO Auto-generated method stub
+            	getContentPane().removeAll(); 
+        		getContentPane().revalidate(); 
+        		getContentPane().repaint();
+        		preguntaAyuda1(Plataforma.this);
+            }
+        });
+		
+		open_pregunta2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	// TODO Auto-generated method stub
+            	getContentPane().removeAll(); 
+        		getContentPane().revalidate(); 
+        		getContentPane().repaint();
+        		preguntaAyuda2(Plataforma.this);
+            }
+        });
+		
+		open_pregunta3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	// TODO Auto-generated method stub
+            	getContentPane().removeAll(); 
+        		getContentPane().revalidate(); 
+        		getContentPane().repaint();
+        		preguntaAyuda3(Plataforma.this);
+            }
+        });
+		
 		barra.add(menuAyuda);
 		
 		menuAyuda.add(open_pregunta1);
@@ -150,15 +181,69 @@ public class Plataforma extends JFrame {
 		
 		this.setJMenuBar(barra);
 		
-		this.add(contentPane);
+		
 
 		setContentPane(contentPane);
 		
 		login3(this);
+		
 	}
 	
+	public void preguntaAyuda3(JFrame frame) {
+		JPanel Ayuda3Panel = new JPanel();
+		Ayuda3Panel.setSize(this.getWidth(), this.getHeight());
+		Ayuda3Panel.setBackground(new Color(255, 128, 255));
+		Ayuda3Panel.setLayout(null);
+		
+		contentPane.add(login);
+		
+		JLabel tituloPregunta3 = new JLabel("¿Que pasa si olvide mi contraseña?", 0);
+		tituloPregunta3.setFont(new Font("Agency FB", Font.BOLD, 40));
+		tituloPregunta3.setForeground(Color.white);
+		tituloPregunta3.setSize(500, 131);
+		tituloPregunta3.setLocation(0, 0);
+		Ayuda3Panel.add(tituloPregunta3);
+		
+		getContentPane().add(Ayuda3Panel);
+	}
 	
-	public void Consultar(JFrame frame) {
+	public void preguntaAyuda2(JFrame frame) {
+		JPanel Ayuda2Panel = new JPanel();
+		Ayuda2Panel.setSize(this.getWidth(), this.getHeight());
+		Ayuda2Panel.setBackground(new Color(255, 128, 255));
+		Ayuda2Panel.setLayout(null);
+		
+		contentPane.add(login);
+		
+		JLabel tituloPregunta2 = new JLabel("¿Como acceder al sistema?", 0);
+		tituloPregunta2.setFont(new Font("Agency FB", Font.BOLD, 40));
+		tituloPregunta2.setForeground(Color.white);
+		tituloPregunta2.setSize(400, 90);
+		tituloPregunta2.setLocation(51, 10);
+		Ayuda2Panel.add(tituloPregunta2);
+		
+		getContentPane().add(Ayuda2Panel);
+	}
+	
+	public void preguntaAyuda1(JFrame frame) {
+		JPanel Ayuda1Panel = new JPanel();
+		Ayuda1Panel.setSize(this.getWidth(), this.getHeight());
+		Ayuda1Panel.setBackground(new Color(255, 128, 255));
+		Ayuda1Panel.setLayout(null);
+		
+		contentPane.add(login);
+		
+		JLabel tituloPregunta = new JLabel("¿Como crear un usuario?", 0);
+		tituloPregunta.setFont(new Font("Agency FB", Font.BOLD, 40));
+		tituloPregunta.setForeground(Color.white);
+		tituloPregunta.setSize(400, 90);
+		tituloPregunta.setLocation(51, 10);
+		Ayuda1Panel.add(tituloPregunta);
+		
+		getContentPane().add(Ayuda1Panel);
+	}
+	
+	public void consultar(JFrame frame) {
 		JPanel consultarPanel = new JPanel();
 		consultarPanel.setSize(this.getWidth(), this.getHeight());
 		consultarPanel.setBackground(new Color(255, 128, 255));
@@ -176,7 +261,7 @@ public class Plataforma extends JFrame {
 		getContentPane().add(consultarPanel);
 	}
 	
-	public void Baja(JFrame frame) {
+	public void baja(JFrame frame) {
 		JPanel bajaPanel = new JPanel();
 		bajaPanel.setSize(this.getWidth(), this.getHeight());
 		bajaPanel.setBackground(new Color(255, 128, 255));
@@ -194,7 +279,7 @@ public class Plataforma extends JFrame {
 		getContentPane().add(bajaPanel);
 	}
 	
-	public void Alta(JFrame frame) {
+	public void alta(JFrame frame) {
 		JPanel AltaPanel = new JPanel();
 		AltaPanel.setSize(this.getWidth(), this.getHeight());
 		AltaPanel.setBackground(new Color(255, 128, 255));
@@ -213,22 +298,62 @@ public class Plataforma extends JFrame {
 	}
 	
 	
-	public void RecuperarCuenta(JFrame frame) {
-		JPanel RecuperarCuenta = new JPanel();
-		RecuperarCuenta.setSize(this.getWidth(), this.getHeight());
-		RecuperarCuenta.setBackground(new Color(255, 128, 255));
-		RecuperarCuenta.setLayout(null);
+	public void recuperarCuenta(JFrame frame) {
+		JPanel recuperarCuenta = new JPanel();
+		recuperarCuenta.setSize(this.getWidth(), this.getHeight());
+		recuperarCuenta.setBackground(new Color(255, 128, 255));
+		recuperarCuenta.setLayout(null);
 		
 		contentPane.add(login);
 		
 		JLabel login_tag = new JLabel("Recuperar cuenta", 0);
+		login_tag.setOpaque(true);
+		login_tag.setBackground(new Color(255, 0, 0));
 		login_tag.setFont(new Font("Agency FB", Font.BOLD, 40));
 		login_tag.setForeground(Color.white);
 		login_tag.setSize(300, 90);
 		login_tag.setLocation(100, 10);
-		RecuperarCuenta.add(login_tag);
+		recuperarCuenta.add(login_tag);
 		
-		getContentPane().add(RecuperarCuenta);
+		getContentPane().add(recuperarCuenta);
+		
+		JLabel lblNewLabel_1 = new JLabel("Correo electronico");
+		lblNewLabel_1.setFont(new Font("Agency FB", Font.BOLD, 20));
+		lblNewLabel_1.setBounds(120, 125, 131, 13);
+		recuperarCuenta.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Agency FB", Font.BOLD, 20));
+		textField.setBounds(120, 148, 270, 40);
+		recuperarCuenta.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("Reestablecer");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setFont(new Font("Agency FB", Font.BOLD, 20));
+		btnNewButton_1.setBackground(new Color(0, 128, 0));
+		btnNewButton_1.setBounds(182, 219, 150, 50);
+		recuperarCuenta.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Volver al Inicio de sesion");
+		btnNewButton_2.setForeground(new Color(255, 255, 255));
+		btnNewButton_2.setFont(new Font("Agency FB", Font.BOLD, 20));
+		btnNewButton_2.setBackground(new Color(0, 0, 255));
+		btnNewButton_2.setBounds(160, 304, 195, 50);
+		btnNewButton_2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				frame.remove(recuperarCuenta);
+				login3(frame);
+				frame.repaint();
+				frame.revalidate();
+				
+			}
+			
+		});
+		recuperarCuenta.add(btnNewButton_2);
 	}
 	
 	public void login3(JFrame frame) {
