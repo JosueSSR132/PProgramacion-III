@@ -15,6 +15,8 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	JPanel panel = new JPanel();
+	int x = 210, y= 185;
 
 	/**
 	 * Launch the application.
@@ -37,7 +39,7 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	 */
 	public TableroDeDibujo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 400);
 		setFocusable(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -50,7 +52,7 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	}
 	
 	public void tablero(JFrame frame) {
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
 		
 		JPanel panel_1 = new JPanel();
@@ -72,7 +74,7 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 		Graphics2D graficos2d = (Graphics2D) g;
 		
 		graficos2d.setColor(Color.decode("#035ab9"));
-		graficos2d.fillRect(50, 50, 200, 100);
+		graficos2d.fillRect(x, y, 30, 30);
 	}
 
 	@Override
@@ -84,7 +86,27 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		 System.out.println("Código de tecla presionada: " + e.getKeyCode());
+		 //System.out.println("Código de tecla presionada: " + e.getKeyCode());
+		 
+		 switch(e.getKeyCode()) {
+			 case 87:
+				 y-=10;
+				 break;
+			 case 83:
+				 y+=10;
+				 break;
+			 case 68:
+				 x+=10;
+				 break;
+			 case 65:
+				 x-=10;
+				 break;
+			 default:
+				 break;
+		 }
+		 this.update(getGraphics());
+		 //getContentPane().repaint();
+		 //getContentPane().revalidate();
 	}
 
 	@Override
