@@ -16,7 +16,7 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	JPanel panel = new JPanel();
-	int x = 210, y= 185;
+	 Jugador jugador, obstaculo1, obstaculo2, obstaculo3;
 
 	/**
 	 * Launch the application.
@@ -49,6 +49,14 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 		
 		this.addKeyListener(this);
 		tablero(this);
+		
+		 jugador = new Jugador(210, 185, 30, 30, "#035ab9");
+		 
+		 obstaculo1 = new Jugador(100, 100, 30, 70, "#010101");
+		 
+		 obstaculo2 = new Jugador(300, 250, 70, 30, "#010101");
+		 
+		 obstaculo3 = new Jugador(280, 130, 70, 30, "#010101");
 	}
 	
 	public void tablero(JFrame frame) {
@@ -67,14 +75,10 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 		
-		dibujar(g);
-	}
-	
-	public void dibujar(Graphics g) {
-		Graphics2D graficos2d = (Graphics2D) g;
-		
-		graficos2d.setColor(Color.decode("#035ab9"));
-		graficos2d.fillRect(x, y, 30, 30);
+		 jugador.dibujar(g);
+		 obstaculo1.dibujar(g);
+		 obstaculo2.dibujar(g);
+		 obstaculo3.dibujar(g);
 	}
 
 	@Override
@@ -90,23 +94,28 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 		 
 		 switch(e.getKeyCode()) {
 			 case 87:
-				 y-=10;
+				 jugador.y-=10;
 				 break;
 			 case 83:
-				 y+=10;
+				 jugador.y+=10;
 				 break;
 			 case 68:
-				 x+=10;
+				 jugador.x+=10;
 				 break;
 			 case 65:
-				 x-=10;
+				 jugador.x-=10;
 				 break;
 			 default:
 				 break;
 		 }
+		 
+		 if (jugador.colisiona(obstaculo1) == true || jugador.colisiona(obstaculo2) == true || jugador.colisiona(obstaculo3) == true) {
+		        System.out.println("Colisión detectada");
+		    }
+		 
 		 this.update(getGraphics());
 		 //getContentPane().repaint();
-		 //getContentPane().revalidate();
+		 //getContentPane().revalidated();
 	}
 
 	@Override
