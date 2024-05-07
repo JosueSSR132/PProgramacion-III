@@ -17,6 +17,27 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	private JPanel contentPane;
 	JPanel panel = new JPanel();
 	 Jugador jugador, obstaculo1, obstaculo2, obstaculo3;
+	 Jugador obstaculo [] = {
+			 				new Jugador(5, 0, 25, 752, "#010101"),
+			 				new Jugador(20, 30, 775, 25, "#010101"),
+			 				new Jugador(20, 725, 775, 27, "#010101"),
+			 				new Jugador(770, 0, 25, 752, "#010101"),
+			 				new Jugador(20, 75, 70, 20, "#010101"),
+			 				new Jugador(130, 55, 20, 100, "#010101"),
+			 				new Jugador(90, 75, 20, 120, "#010101"),
+			 				new Jugador(30, 115, 40, 20, "#010101"),
+			 				new Jugador(170, 75, 90, 20, "#010101"),
+			 				new Jugador(170, 115, 90, 20, "#010101"),
+			 				new Jugador(260, 55, 20, 40, "#010101"),
+			 				new Jugador(50, 155, 20, 70, "#010101"),
+			 				new Jugador(90, 215, 20, 60, "#010101"),
+			 				new Jugador(50, 235, 40, 20, "#010101"),
+			 				new Jugador(90, 205, 40, 20, "#010101"),
+			 				new Jugador(130, 185, 20, 80, "#010101"),
+			 				new Jugador(110, 255, 20, 20, "#010101"),
+			 				new Jugador(130, 155, 40, 20, "#010101"),
+			 				//new Jugador(110, 55, 20, 70, "#010101")
+			 				};
 
 	/**
 	 * Launch the application.
@@ -39,7 +60,7 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	 */
 	public TableroDeDibujo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 400);
+		setBounds(100, 100, 800, 800);
 		setFocusable(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -50,13 +71,8 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 		this.addKeyListener(this);
 		tablero(this);
 		
-		 jugador = new Jugador(210, 185, 30, 30, "#035ab9");
+		 jugador = new Jugador(210, 185, 20, 20, "#035ab9");
 		 
-		 obstaculo1 = new Jugador(100, 100, 30, 70, "#010101");
-		 
-		 obstaculo2 = new Jugador(300, 250, 70, 30, "#010101");
-		 
-		 obstaculo3 = new Jugador(280, 130, 70, 30, "#010101");
 	}
 	
 	public void tablero(JFrame frame) {
@@ -74,11 +90,15 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		Graphics2D graficos2d = (Graphics2D) g;
 		
-		 jugador.dibujar(g);
-		 obstaculo1.dibujar(g);
-		 obstaculo2.dibujar(g);
-		 obstaculo3.dibujar(g);
+		jugador.dibujar(graficos2d);
+		
+		for(Jugador obstaculo : obstaculo) {
+			
+	        graficos2d.setColor(Color.decode(obstaculo.color));
+	        graficos2d.fillRect(obstaculo.x, obstaculo.y, obstaculo.largo, obstaculo.altura);
+		}
 	}
 
 	@Override
@@ -91,27 +111,54 @@ public class TableroDeDibujo extends JFrame implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		 //System.out.println("Código de tecla presionada: " + e.getKeyCode());
+		int der = 0;
 		 
 		 switch(e.getKeyCode()) {
 			 case 87:
 				 jugador.y-=10;
+				 der = 1;
 				 break;
 			 case 83:
 				 jugador.y+=10;
+				 der = 2;
 				 break;
 			 case 68:
 				 jugador.x+=10;
+				 der = 3;
 				 break;
 			 case 65:
 				 jugador.x-=10;
+				 der = 4;
 				 break;
 			 default:
 				 break;
 		 }
 		 
-		 if (jugador.colisiona(obstaculo1) == true || jugador.colisiona(obstaculo2) == true || jugador.colisiona(obstaculo3) == true) {
+		 for(Jugador obstaculo : this.obstaculo) {
+			 
+		 
+		 if (jugador.colisiona(obstaculo)) {
 		        System.out.println("Colisión detectada");
+		        
+		        if(der == 1) {
+		        	jugador.y+=10;
+		        }
+		        
+		        if(der == 2) {
+		        	jugador.y-=10;
+		        }
+		        
+		        if(der == 3) {
+		        	jugador.x-=10;
+		        }
+		        
+		        if(der == 4) {
+		        	jugador.x+=10;
+		        }
+
 		    }
+		 
+		 }
 		 
 		 this.update(getGraphics());
 		 //getContentPane().repaint();

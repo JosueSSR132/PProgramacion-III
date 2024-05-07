@@ -44,19 +44,17 @@ public class Jugador {
     }
 	
 	public boolean colisiona(Jugador obstaculo) {
-        if (this.getX() > obstaculo.getX() + obstaculo.getLargo()) {
-            return false; 
-        }
-        if (this.getX() + this.getLargo() < obstaculo.getX()) {
-            return false; 
-        }
-        if (this.getY() > obstaculo.getY() + obstaculo.getAltura()) {
-            return false; 
-        }
-        if (this.getY() + this.getAltura() < obstaculo.getY()) {
-            return false; 
-        }
-        
-        return true;
+		// Puedes ajustar este valor según sea necesario
+
+		    // Revisa las condiciones de colisión con los márgenes
+		boolean colisionX = this.getX() < obstaculo.getX() + obstaculo.getLargo() &&
+                this.getX() + this.getLargo() > obstaculo.getX();
+
+// Verifica si hay colisión en el eje y
+boolean colisionY = this.getY() < obstaculo.getY() + obstaculo.getAltura() &&
+                this.getY() + this.getAltura() > obstaculo.getY();
+
+// Retorna verdadero si hay colisión tanto en el eje x como en el eje y
+return colisionX && colisionY;
     }
 }
